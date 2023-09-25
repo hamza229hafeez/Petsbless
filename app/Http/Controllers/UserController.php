@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Vendor;
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -56,16 +58,28 @@ class UserController extends Controller
     }
     }
     public function show($id)
-    {
-        try {
-        
+    { try {
+        // Find the user by ID
         $user = User::findOrFail($id);
-            if($user){return response()->json(['user' => $user], 200);}
-        return response()->json(['No user exist'], 404);
+
+        // Check if the user has associated vendor data
+        $vendor = Vendor::where('user_id', $user->id)->first();
+
+        if ($user && $vendor) {
+            // If both user and vendor exist, return user and vendor data
+            return response()->json(['user' => $user, 'vendor' => $vendor], 200);
+        }
+
+        // If the user exists but doesn't have vendor data
+        if ($user) {
+            return response()->json(['user' => $user, 'vendor' => null], 200);
+        }
+
+        return response()->json(['message' => 'No user exist'], 404);
     } catch (\Throwable $th) {
         return response()->json([
-            'message' => 'error',
-            'user' => $th
+            'message' => 'Error',
+            'error' => $th->getMessage(),
         ], 500);
     }
     }

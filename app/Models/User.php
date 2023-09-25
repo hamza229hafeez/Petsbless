@@ -14,6 +14,10 @@ class User extends Model
     public $incrementing = false; // Disabling auto-incrementing for the primary key
     protected $keyType = 'string';
     
+    public function vendor()
+    {
+        return $this->hasOne(Vendor::class);
+    }
     public function services()
     {
         return $this->hasMany(Service::class, 'userid');

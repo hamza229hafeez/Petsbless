@@ -9,7 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PetsForServiceController;
 use App\Http\Controllers\RequestController;
-
+use App\Http\Controllers\VendorController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,6 +41,10 @@ Route::get('/services', [ServiceController::class, 'index']);
 Route::post('/services', [ServiceController::class, 'store']);
 Route::get('/services/{id}', [ServiceController::class, 'show']);
 Route::get('/user-services/{userId}', [ServiceController::class, 'getServicesByUserId']);
+
+//Route::get('/vendors', [VendorController::class, 'index']);
+Route::post('/vendor', [VendorController::class, 'store']);
+Route::get('/vendor/{id}', [VendorController::class, 'getVendorById']);
 
 
 
