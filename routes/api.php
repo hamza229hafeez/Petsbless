@@ -10,6 +10,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PetsForServiceController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\JobController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -46,7 +47,9 @@ Route::get('/user-services/{userId}', [ServiceController::class, 'getServicesByU
 Route::post('/vendor', [VendorController::class, 'store']);
 Route::get('/vendor/{id}', [VendorController::class, 'getVendorById']);
 
-
+Route::post('/job', [JobController::class, 'store']);
+Route::get('/jobs', [JobController::class, 'indexWithPets']);
+Route::get('/jobs/{id}', [JobController::class, 'getJobsByUserId']);
 
 
 

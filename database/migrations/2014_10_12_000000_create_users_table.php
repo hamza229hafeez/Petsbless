@@ -72,6 +72,18 @@ return new class extends Migration
     
                 $table->timestamps();
             });
+            Schema::create('jobs', function (Blueprint $table) {
+                $table->id();
+                $table->string('service_type');
+                $table->date('start_date');
+                $table->date('end_date');
+                $table->string('service_location');
+                $table->text('description');
+                $table->boolean('pickup_service');
+                $table->string('user_id'); // Changed data type to string
+                $table->foreign('user_id')->references('id')->on('users');
+                $table->timestamps();
+            });
             
     }
 
