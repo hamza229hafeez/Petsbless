@@ -50,6 +50,7 @@ Route::get('/vendor/{id}', [VendorController::class, 'getVendorById']);
 Route::post('/job', [JobController::class, 'store']);
 Route::get('/jobs', [JobController::class, 'indexWithPets']);
 Route::get('/jobs/{id}', [JobController::class, 'getJobsByUserId']);
+Route::get('/jobs/service-type/{service_type}', [JobController::class, 'getJobsByServiceType']);
 
 
 

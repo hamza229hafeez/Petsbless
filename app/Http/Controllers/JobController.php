@@ -52,6 +52,16 @@ class JobController extends Controller
         // Return a JSON response with the list of jobs
         return response()->json(['data' => $jobs]);
     }
+    public function getJobsByServiceType($service_type)
+    {
+        // Retrieve jobs for the specified service_type with user details and pet photos
+        $jobs = Job::where('service_type', $service_type)
+            ->with(['user', 'pets.photos'])
+            ->get();
+
+        // Return a JSON response with the list of jobs and their related data
+        return response()->json(['data' => $jobs]);
+    }
     public function index()
     {
         // Get all jobs
