@@ -83,6 +83,16 @@ class UserController extends Controller
         ], 500);
     }
     }
+    public function searchByAddress(Request $request)
+    {
+        $address = $request->input('address');
+
+        // Use Eloquent to search for users based on the address
+        $users = User::where('address', 'like', "%$address%")->get();
+
+        // Return the search results as JSON
+        return response()->json(['users' => $users]);
+    }
     // public function deleteUserData($userId)
     // {
     //     $user = PetPost::find($userId);
