@@ -24,7 +24,7 @@ use App\Http\Controllers\JobController;
 Route::get('/users', [UserController::class, 'index']);
 Route::post('/adduser', [UserController::class, 'store']);
 Route::get('/user/{id}', [UserController::class, 'show']);
-
+Route::get('/users/search', [UserController::class, 'searchByAddress']);
 
 Route::get('/pets', [PetController::class, 'index']);
 Route::post('/addpet', [PetController::class, 'store']);

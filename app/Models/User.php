@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
-    protected $fillable = ['id', 'username', 'name', 'email', 'profilepicture','contactnumber'];
+    protected $fillable = ['id', 'username', 'name','address', 'email', 'profilepicture','contactnumber'];
     protected $primaryKey = 'id'; // Specifying 'id' as the primary key
     public $incrementing = false; // Disabling auto-incrementing for the primary key
     protected $keyType = 'string';
